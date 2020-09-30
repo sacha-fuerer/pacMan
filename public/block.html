@@ -15,10 +15,23 @@
                 img.src = url + '/pac?id=' + flag; // use flag to choose image
                 flag = 2;
             } else {
+                img.src = url + '/pac?id=' + flag; // use flag to choose image
                 flag = 1;
             }
+
             // send position data to Server in url
             fetch(url + '/set?x=' + pos);
+
+            setTimeout(Run, 200);
+
+        }
+
+        function checkPageBounds(direction, imgWidth) {
+            let pageWidth = window.innerWidth;
+            if (direction == 0 && pos + imgWidth > pageWidth) direction = 1;
+            if (direction == 1 && pos < 0) direction = 0;
+
+            return direction;
         }
     </SCRIPT>
 </head>
